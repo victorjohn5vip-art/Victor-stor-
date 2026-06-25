@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nike Air Max - Victor Store</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+:root{
+--primary:#00d95f;
+--secondary:#00ff88;
+--dark:#0b0b0b;
+--white:#ffffff;
+--gray:#666;
+--bg:#f6f7fb;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:var(--bg);
+}
+
+.container{
+width:90%;
+max-width:1300px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+background:#000;
+padding:18px 0;
+}
+
+.logo{
+color:white;
+font-size:32px;
+font-weight:800;
+}
+
+.logo span{
+color:var(--secondary);
+}
+
+/* PRODUCT */
+
+.product-page{
+padding:60px 0;
+}
+
+.product-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:start;
+}
+
+/* GALLERY */
+
+.main-image{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.main-image img{
+width:100%;
+height:500px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.thumbnails{
+display:flex;
+gap:15px;
+margin-top:15px;
+}
+
+.thumbnails img{
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+border:3px solid transparent;
+transition:.3s;
+}
+
+.thumbnails img:hover{
+border-color:var(--primary);
+}
+
+/* INFO */
+
+.product-info{
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.badge{
+display:inline-block;
+background:var(--primary);
+color:white;
+padding:8px 14px;
+border-radius:50px;
+font-size:13px;
+margin-bottom:15px;
+}
+
+.product-title{
+font-size:38px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.rating{
+color:#ffb400;
+margin-bottom:20px;
+}
+
+.price{
+font-size:42px;
+font-weight:800;
+color:var(--primary);
+margin-bottom:20px;
+}
+
+.description{
+line-height:1.8;
+color:var(--gray);
+margin-bottom:25px;
+}
+
+/* OPTIONS */
+
+.option-title{
+font-weight:600;
+margin-bottom:12px;
+}
+
+.sizes{
+display:flex;
+gap:10px;
+margin-bottom:25px;
+flex-wrap:wrap;
+}
+
+.size{
+padding:12px 18px;
+border:2px solid #ddd;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.size:hover{
+background:var(--primary);
+border-color:var(--primary);
+color:white;
+}
+
+.colors{
+display:flex;
+gap:12px;
+margin-bottom:25px;
+}
+
+.color{
+width:40px;
+height:40px;
+border-radius:50%;
+cursor:pointer;
+border:3px solid white;
+box-shadow:0 0 0 2px #ddd;
+}
+
+.black{background:#000;}
+.green{background:#00d95f;}
+.red{background:#ff3d3d;}
+.blue{background:#0084ff;}
+
+/* QUANTITY */
+
+.qty{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:25px;
+}
+
+.qty button{
+width:40px;
+height:40px;
+border:none;
+background:#eee;
+font-size:20px;
+cursor:pointer;
+}
+
+.qty input{
+width:70px;
+text-align:center;
+padding:10px;
+}
+
+/* BUTTONS */
+
+.buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:16px 30px;
+border:none;
+cursor:pointer;
+font-weight:600;
+border-radius:12px;
+font-size:16px;
+}
+
+.cart-btn{
+background:black;
+color:white;
+}
+
+.whatsapp-btn{
+background:#25D366;
+color:white;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+gap:10px;
+}
+
+.whatsapp-btn:hover{
+opacity:.9;
+}
+
+/* DETAILS */
+
+.details{
+margin-top:60px;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.details h2{
+margin-bottom:20px;
+}
+
+.details ul{
+padding-left:20px;
+line-height:2;
+}
+
+/* REVIEWS */
+
+.reviews{
+margin-top:40px;
+}
+
+.review{
+background:#fafafa;
+padding:20px;
+border-radius:15px;
+margin-top:15px;
+}
+
+.review h4{
+margin-bottom:5px;
+}
+
+.stars{
+color:#ffb400;
+}
+
+@media(max-width:900px){
+
+.product-grid{
+grid-template-columns:1fr;
+}
+
+.main-image img{
+height:350px;
+}
+
+.product-title{
+font-size:30px;
+}
+
+.price{
+font-size:34px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<div class="logo">Victor <span>Store</span></div>
+</div>
+</header>
+
+<section class="product-page">
+
+<div class="container">
+
+<div class="product-grid">
+
+<!-- GALERIA -->
+
+<div>
+
+<div class="main-image">
+<img id="mainImg"
+src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200">
+</div>
+
+<div class="thumbnails">
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200"
+onclick="changeImage(this.src)">
+
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=1200"
+onclick="changeImage(this.src)">
+
+<img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=1200"
+onclick="changeImage(this.src)">
+
+<img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=1200"
+onclick="changeImage(this.src)">
+
+</div>
+
+</div>
+
+<!-- INFO -->
+
+<div class="product-info">
+
+<div class="badge">
+Mais Vendido
+</div>
+
+<h1 class="product-title">
+Nike Air Max Premium
+</h1>
+
+<div class="rating">
+★★★★★ (4.9/5)
+</div>
+
+<div class="price">
+2.500 MT
+</div>
+
+<p class="description">
+Tênis premium com tecnologia Air Max,
+extremamente confortável, leve e ideal para
+uso diário, desporto e caminhadas.
+</p>
+
+<div class="option-title">
+Escolha o Tamanho
+</div>
+
+<div class="sizes">
+<div class="size">38</div>
+<div class="size">39</div>
+<div class="size">40</div>
+<div class="size">41</div>
+<div class="size">42</div>
+<div class="size">43</div>
+</div>
+
+<div class="option-title">
+Escolha a Cor
+</div>
+
+<div class="colors">
+<div class="color black"></div>
+<div class="color green"></div>
+<div class="color red"></div>
+<div class="color blue"></div>
+</div>
+
+<div class="option-title">
+Quantidade
+</div>
+
+<div class="qty">
+<button onclick="minus()">-</button>
+
+<input id="qty" type="number" min="1" value="1">
+
+<button onclick="plus()">+</button>
+</div>
+
+<div class="buttons">
+
+<button class="btn cart-btn" onclick="adicionarCarrinho()">
+Adicionar ao Carrinho
+</button>
+
+<a
+class="btn whatsapp-btn"
+id="whatsappBtn"
+target="_blank"
+href="#">
+<i class="fab fa-whatsapp"></i>
+Comprar pelo WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- DETALHES -->
+
+<div class="details">
+
+<h2>Especificações</h2>
+
+<ul>
+<li>Marca: Nike</li>
+<li>Modelo: Air Max Premium</li>
+<li>Material: Têxtil + Borracha</li>
+<li>Cor: Variável</li>
+<li>Género: Masculino/Feminino</li>
+<li>Garantia: 30 dias</li>
+</ul>
+
+<div class="reviews">
+
+<h2>Avaliações dos Clientes</h2>
+
+<div class="review">
+<h4>Carlos M.</h4>
+<div class="stars">★★★★★</div>
+<p>Produto excelente. Chegou rápido.</p>
+</div>
+
+<div class="review">
+<h4>Ana J.</h4>
+<div class="stars">★★★★★</div>
+<p>Qualidade incrível e muito confortável.</p>
+</div>
+
+<div class="review">
+<h4>Pedro S.</h4>
+<div class="stars">★★★★☆</div>
+<p>Muito bom, recomendo.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+function changeImage(src){
+document.getElementById("mainImg").src = src;
+}
+
+function plus(){
+let q = document.getElementById("qty");
+q.value = parseInt(q.value)+1;
+}
+
+function minus(){
+let q = document.getElementById("qty");
+
+if(parseInt(q.value) > 1){
+q.value = parseInt(q.value)-1;
+}
+}
+
+const numero = "258840595258";
+
+document.getElementById("whatsappBtn").addEventListener("click",function(){
+
+const quantidade =
+document.getElementById("qty").value;
+
+const texto =
+`Olá Victor Store, pretendo comprar:
+
+Produto: Nike Air Max Premium
+Preço: 2.500 MT
+Quantidade: ${quantidade}`;
+
+this.href =
+`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+
+});
+
+function adicionarCarrinho(){
+
+let quantidade =
+parseInt(document.getElementById("qty").value);
+
+let carrinho =
+JSON.parse(localStorage.getItem("carrinho")) || [];
+
+carrinho.push({
+nome:"Nike Air Max Premium",
+preco:2500,
+quantidade:quantidade,
+imagem:document.getElementById("mainImg").src
+});
+
+localStorage.setItem(
+"carrinho",
+JSON.stringify(carrinho)
+);
+
+alert("Produto adicionado ao carrinho!");
+
+}
+
+const produtos =
+JSON.parse(localStorage.getItem("produtos")) || [];
+
+const index =
+localStorage.getItem("produtoSelecionado");
+
+if(index !== null && produtos[index]){
+
+const produto = produtos[index];
+
+document.querySelector(".product-title").innerText =
+produto.nome || "Produto";
+
+document.querySelector(".price").innerText =
+(produto.preco || 0) + " MT";
+
+document.querySelector(".description").innerText =
+produto.descricao || "";
+
+if(produto.imagem){
+document.getElementById("mainImg").src =
+produto.imagem;
+}
+
+}else{
+
+console.log("Produto não encontrado");
+
+}
+
+console.log(produtos);
+console.log(index);
+</script>
+
+</body>
+</html>
+

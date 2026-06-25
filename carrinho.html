@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho - Victor Store</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>🛒 Meu Carrinho</h1>
+</header>
+
+<section class="produtos">
+
+<div id="listaCarrinho"></div>
+
+<h2>
+Total:
+<span id="total">0 MT</span>
+</h2>
+
+<button onclick="window.location.href='pagamento.html'"
+class="btn-cart">
+💳 Ir para Pagamento
+</button>
+
+<button onclick="limparCarrinho()" class="btn-cart">
+Limpar Carrinho
+</button>
+
+<button onclick="finalizarPedido()" class="btn-cart">
+📱 Finalizar Pedido
+</button>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

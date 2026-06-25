@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Admin - Victor Store</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+padding:20px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+h1 span{
+color:#00d95f;
+}
+
+.card{
+background:#1a1a1a;
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+input, textarea{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:8px;
+background:#2a2a2a;
+color:white;
+}
+
+button{
+background:#00d95f;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.produtos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.produto{
+background:#1a1a1a;
+padding:15px;
+border-radius:10px;
+}
+
+.produto img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.produto h3{
+margin:10px 0;
+}
+
+.preco{
+color:#00d95f;
+font-weight:bold;
+}
+
+.excluir{
+background:red;
+margin-top:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Victor <span>Store</span> Admin</h1>
+
+<div class="card">
+
+<input type="password" id="senha" placeholder="Senha Admin">
+
+<button onclick="login()">
+Entrar
+</button>
+
+</div>
+
+<div id="painel" style="display:none;">
+
+<h2>🔔 Novos Pedidos</h2>
+
+<div id="listaPedidos"></div>
+
+<div class="card">
+
+<h2>Adicionar Produto</h2>
+
+<input type="text" id="nome" placeholder="Nome do Produto">
+
+<input type="number" id="preco"
+placeholder="Preço do Produto">
+
+<input type="number" id="stock" placeholder="Quantidade em Stock">
+
+<input type="file" id="imagem" accept="image/*">
+
+<textarea id="descricao" placeholder="Descrição"></textarea>
+
+<button onclick="adicionarProduto()">
+Adicionar Produto
+</button>
+
+</div>
+
+<div class="produtos" id="listaProdutos"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const senhaAdmin = "157515";
+
+function login(){
+
+const senha = document.getElementById("senha").value;
+
+if(senha === senhaAdmin){
+
+document.getElementById("painel").style.display="block";
+
+alert("Login realizado!");
+
+}else{
+
+alert("Senha incorreta!");
+
+}
+
+}
+
+let produtos =
+JSON.parse(localStorage.getItem("produtos")) || [];
+
+function salvar(){
+
+localStorage.setItem(
+"produtos",
+JSON.stringify(produtos)
+);
+
+mostrarProdutos();
+
+}
+
+function adicionarProduto(){
+
+const arquivo =
+document.getElementById("imagem").files[0];
+
+if(!arquivo){
+alert("Escolha uma imagem");
+return;
+}
+
+const leitor = new FileReader();
+
+leitor.onload = function(event){
+
+const produto = {
+
+nome: document.getElementById("nome").value,
+
+preco: document.getElementById("preco").value,
+
+stock: document.getElementById("stock").value,
+
+descricao: document.getElementById("descricao").value,
+
+imagem: event.target.result
+
+};
+
+produtos.push(produto);
+
+salvar();
+
+alert("Produto adicionado!");
+
+};
+
+leitor.readAsDataURL(arquivo);
+
+}
+
+
+function excluirProduto(index){
+
+produtos.splice(index,1);
+
+salvar();
+
+}
+
+function mostrarProdutos(){
+
+const lista =
+document.getElementById("listaProdutos");
+
+lista.innerHTML="";
+
+produtos.forEach((p,index)=>{
+
+lista.innerHTML += `
+
+<div class="produto">
+
+<img src="${p.imagem}">
+
+<h3>${p.nome}</h3>
+
+<p>${p.descricao}</p>
+
+<p class="preco">${p.preco} MT</p>
+
+<button class="excluir"
+onclick="excluirProduto(${index})">
+Excluir
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+function mostrarPedidos(){
+
+const lista =
+document.getElementById("listaPedidos");
+
+if(!lista) return;
+
+let pedidos =
+JSON.parse(localStorage.getItem("pedidos")) || [];
+
+lista.innerHTML = "";
+
+pedidos.forEach((pedido,index)=>{
+
+let produtosHTML = "";
+
+if(pedido.produtos){
+
+pedido.produtos.forEach(produto=>{
+
+produtosHTML += `
+<p>📦 ${produto.nome} (${produto.quantidade}x)</p>
+`;
+
+});
+
+}
+
+lista.innerHTML += `
+<div class="card">
+
+<h3>Pedido ${index + 1}</h3>
+
+${produtosHTML}
+
+<p>💰 Total: ${pedido.total} MT</p>
+
+<p>📅 ${pedido.data}</p>
+
+</div>
+`;
+
+});
+
+}
+
+mostrarProdutos();
+mostrarPedidos();
+
+</script>
+
+</body>
+</html>
